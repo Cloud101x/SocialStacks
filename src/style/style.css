@@ -1,0 +1,77 @@
+
+
+body {
+    background-color: #f8f9fa;
+    height: 100vh;
+    margin: 0;
+    overflow: visible;
+}
+
+.container {
+    height: 100%;
+}
+
+.card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-block{
+    display: block;
+    width: 100%;
+
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.content-area {
+    padding: 0px;
+    margin: 0%;
+}
+
+.content {
+    display: none; /* All content sections are hidden by default */
+}
+
+.content.active {
+    display: block; /* Only the active content section will be displayed */
+}
+.content-area {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+}
+.nav_link {
+    transition: background 0.3s, color 0.3s;
+}
+/* Set the parent div to take the full height of the viewport */
+.content-area {
+    margin-left: 0px; /* Adjust based on your sidebar width */
+    margin-top: 1px;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 1;
+}
+.modal-open .content-area {
+    overflow-y: visible;
+}
+
+/* Ensure the webview fills the parent div */
+webview {
+    flex-grow: 1; /* Takes up the remaining space in the parent */
+    width: 100%;  /* Full width of the parent div */
+    height: 100%; /* Full height of the parent div */
+    border: none; /* Remove default border */
+}

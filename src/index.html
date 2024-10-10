@@ -1,77 +1,505 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Temperature Converter</title>
-    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-
-  </head>
-  <body>
-    <h1>Temperature Converter</h1>
-    <div class="form-group col-md-3">
-      <label for="usr">Celcius:</label>
-      <input type="text" class="form-control" id="celcius" onkeyup="celciusToFahrenheit()">
-    </div>
-    <div class="form-group col-md-3">
-      <label for="pwd">Fahrenheit:</label>
-      <input type="text" class="form-control" id="fahrenheit" onkeyup="fahrenheitToCelcius()">
-    </div>
-    <script src='./renderer.js'></script>
-  
-  </body>
-</html> -->
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SocialStacks</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/style.css">
-</head>
-<body>
-    <div class="container h-100 d-flex justify-content-center align-items-center">
-        <div class="card p-4">
-            <h2 class="text-center mb-4">Login</h2>
-            <form id="login-form">
-              <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
-              </div>
-              <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-              </div><br>
-              <button type="submit" class="btn btn-primary btn-block">Login</button>
-          </form>
-          
+                        <html lang="en">
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>SocialStacks</title>
+                                <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+                                <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+                                <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+                                <link rel="stylesheet" href="style/style.css">
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <script src="https://kit.fontawesome.com/356ba4ed95.js" crossorigin="anonymous"></script>
+                                <style>
+                                ::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1; 
+                                }
+                                 
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888; 
+                                }
+                                
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #555; 
+                                } @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+                                :root{
+                                --header-height: 2rem;
+                                --nav-width: 68px;
+                                --first-color: #343a40; /*#4723D9*/
+                                --first-color-light: #AFA5D9;
+                                --white-color: #F7F6FB;
+                                --body-font: 'Nunito', sans-serif;
+                                --normal-font-size: 1rem;
+                                --z-fixed: 100
+                                    }*,
+                                ::before,::after{box-sizing: border-box}
+                                body{
+                                    position: relative;
+                                    margin: var(--header-height) 0 0 0;
+                                    padding: 0rem;
+                                    font-family: var(--body-font);
+                                    font-size: var(--normal-font-size);
+                                    transition: .5s
+                                    }
+                                    a{
+                                    text-decoration: none
+                                    }
+                                    .header_toggle{
+                                color: var(--first-color);
+                                font-size: 1.5rem;
+                                cursor: pointer
+                                }
+                                .header_icons {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+                                    gap: 15px;
+                                    margin-right: 20px;
+                                }
+
+                                .header_icons .btn {
+                                    background-color: transparent;
+                                    border: none;
+                                    font-size: 24px;
+                                    color: #333;
+                                    cursor: pointer;
+                                }
+
+                                .header_icons .btn i {
+                                    transition: color 0.3s ease;
+                                }
+
+                                .header_icons .btn:hover i {
+                                    color: #007bff;
+                                }
+
+                                /* Adjust button size */
+                                .header_icons .btn i {
+                                    font-size: 24px;
+                                }
+
+                                /* Modal content */
+                                .modal-header {
+                                    background-color: #f8f9fa;
+                                }
+
+                                .modal-body {
+                                    padding: 20px;
+                                }
+
+                                .modal-title {
+                                    color: #333;
+                                }
+
+                                /* For Settings toggle */
+                                .form-check-label {
+                                    margin-left: 10px;
+                                }
+
+                                .header{
+                                    width: 100%;
+                                height: var(--header-height);
+                                position: fixed;
+                                top: 0;
+                                left: 0;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                padding: 0;
+                                background-color: var(--white-color);
+                                z-index: var(--z-fixed);
+                                transition: .5s;
+                            }
+                                .l-navbar{
+                                    position: fixed;
+                                    top: 0;
+                                    left: -30%;
+                                    width: var(--nav-width);
+                                    height: 100vh;
+                                    background-color: var(--first-color);
+                                    padding: .5rem 1rem 0 0;
+                                    transition: .5s;
+                                    z-index: var(--z-fixed)
+                                }
+                                .nav{
+                                    height: 100%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-between;
+                                    overflow: hidden
+                                }
+                                .nav_logo, .nav_link{
+                                    display: grid;
+                                    grid-template-columns: max-content max-content;
+                                    align-items: center;
+                                    column-gap: 1rem;
+                                    padding: .5rem 0 .5rem 1.5rem
+                                }
+                                .nav_logo{margin-bottom: 2rem}
+                                .nav_logo-icon{font-size: 1.25rem;color: var(--white-color)}
+                                .nav_logo-name{color: var(--white-color);font-weight: 700}
+                                .nav_link{
+                                    position: relative;
+                                    color: var(--first-color-light);
+                                    margin-bottom: 1.5rem;
+                                    transition: .3s
+                                }
+                                .nav_link:hover{
+                                    color: var(--white-color);
+                                    background-color: #495057;
+                                    border-radius: 4px;
+                                }
+                                .nav_icon{font-size: 1.25rem}
+                                .show{left: 0}
+                                .body-pd{padding-left: calc(var(--nav-width) + 1rem)}
+                                .active{color: var(--white-color)}
+                                .active::before{
+                                    content: '';
+                                    position: absolute;
+                                    left: 0;
+                                    width: 2px;
+                                    height: 32px;
+                                    background-color: var(--white-color)
+                                }
+                                .height-100{height:100vh}
+                                .footer-dress{
+                                    position: fixed;
+                                    width: 100%;
+                                    display: flex;
+                                    text-align: justify;
+                                    font-size: small;
+                                    color: #929394;
+                                    align-items: center;
+                                    justify-content: center;
+                                    background-color: var(--white-color);
+                                    bottom: 0%;
+                                    left: 0%;
+                                }
+                                .custom-dropdown {
+                                    position: fixed;
+                                    top: 0 !important;
+                                    left: 0;
+                                    width: 100%;
+                                    background-color: #f7eded;
+                                    color: white;
+                                    text-align: center;
+                                    padding: 10px 0;
+                                    z-index: 1000;
+                                    margin: auto !important;
+                                    right: 0 !important;
+                                }
+                                @media screen and (min-width: 768px){body{margin: calc(var(--header-height) + 1rem) 0 0 0;padding-left: calc(var(--nav-width) + 2rem)}
+                                .header{height: calc(var(--header-height) + 1rem);padding: 0 2rem 0 calc(var(--nav-width) + 2rem)}
+                                .header_img{width: 40px;height: 40px}
+                                .header_img img{width: 45px}
+                                .l-navbar{left: 0; margin-right: 0; padding: 1rem 1rem 0 0}
+                                .show{width: calc(var(--nav-width) + 156px)}
+                                .body-pd{padding-left: calc(var(--nav-width) + 188px)}}
+                                .modal {
+                                    z-index: 2000 !important;
+                                }
+                                </style>
+                                </head>
+                                <body className='snippet-body'>
+                                <body id="body-pd">
+                                    <!--Header Begins-->
+                                    <header class="header" id="header">
+                                        <div class="header_toggle">
+                                            <i class='bx bx-menu' id="header-toggle"></i>
+                                        </div>
+                                        <div class="header_icons">
+                                            <!-- Settings Button -->
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                                                <i class="fa fa-cog"></i>
+                                            </button>
+                                    
+                                            <!-- Time Converter Button -->
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#timeConverterModal">
+                                                <i class="fa fa-clock"></i>
+                                            </button>
+                                    
+                                            <!-- Currency Converter Button -->
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#currencyConverterModal">
+                                                <i class="fa fa-dollar-sign"></i>
+                                            </button>
+                                    
+                                            <!-- Support Us Button -->
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#supportModal">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </div>
+                                    </header>
+                                    
+    <!--Left Navigation Pane-->
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav_logo">
+                    <i class='bx bx-layer nav_logo-icon'></i>
+                    <span class="nav_logo-name">SocialStacks</span>
+                </a>
+                <div class="nav_list">
+                    <a href="#" class="nav_link active" data-url="https://web.whatsapp.com/" title="Whatsapp">
+                       <!-- <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Whatsapp</span>-->
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        <span class="nav_name">Whatsapp</span>
+                    </a>
+                    <a href="#" class="nav_link" data-url="https://web.telegram.org/k/" title="Telegram">
+                        <!--<i class='bx bx-user nav_icon'></i> <span class="nav_name">Telegram</span>-->
+                        <i class="fa-brands fa-telegram" aria-hidden="true"> </i>
+                        <span class="nav_name">Telegram</span>
+                    </a>
+                    <a href="#" class="nav_link"  data-url="https://web.facebook.com/login/?_rdc=1&_rdr" title="Facebook">
+                        <!--<i class='bx bx-message-square-detail nav_icon'></i> -->
+                        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                        <span class="nav_name">Facebook</span>
+                    </a>
+                    <a href="#" class="nav_link"  data-url="https://www.instagram.com/accounts/login/" title="Instagram">
+                        <!--<i class='bx bx-bookmark nav_icon'></i>-->
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        <span class="nav_name">Instagram</span>
+                    </a>
+                    <a href="#" class="nav_link" data-url="https://x.com/i/flow/login" title="Twitter (X)">
+                        <!--<i class='bx bx-folder nav_icon'></i>-->
+                        <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+                        <span class="nav_name">Twitter</span>
+                    </a>
+                    <a href="#" class="nav_link" data-url="https://www.linkedin.com/login" title="Linkedin">
+                        <!--<i class='bx bx-bar-chart-alt-2 nav_icon'></i>-->
+                        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                        <span class="nav_name">Linkedin</span>
+                    </a>
+                    
+                    
+                </div>
+                <!-- Dropdown for More... -->
+                <div class="dropdown">
+                    <a class="nav_link btn" href="#" role="button" id="moreDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="click for more">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                        <span class="nav_name"> More...</span>
+                    </a>
+
+                    <!-- Dropdown Menu -->
+                    <ul class="dropdown-menu dropdown-menu-end custom-dropdown" aria-labelledby="moreDropdown">
+                        <li class="dropdown-item text-center">
+                            <a href="#" class="text-dark nav_link" data-url="https://www.tiktok.com/login?lang=en" title="TikTok">
+                                <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+                                <span class="ms-1 nav_name">TikTok</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item text-center">
+                            <a href="#" class="text-dark nav_link" data-url="https://www.snapchat.com/" title="Snapchat">
+                                <i class="fa-brands fa-snapchat" aria-hidden="true"></i>
+                                <span class="ms-1 nav_name">Snapchat</span>
+                            </a>
+                        </li>
+                        <li class="dropdown-item text-center">
+                            <a href="#" class="text-dark nav_link" data-url="https://www.pinterest.com/login" title="Pinterest">
+                                <i class="fa-brands fa-pinterest" aria-hidden="true"></i>
+                                <span class="ms-1 nav_name">Pinterest</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="#" class="nav_link">
+                <i class="fa-regular fa-life-ring fa-beat-fade" data-bs-toggle="modal" data-bs-target="#supportModal" title="Support Us"></i>
+                <span class="nav_name">Support Us!</span>
+            </a>
+        </nav>
+    </div>
+    <!-- Support Us Modal -->
+<div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="supportModalLabel">Support Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>We appreciate your support! If you'd like to contribute to our project, please follow the options below:</p>
+                <!-- You can add your support information here, like a donation link, or custom options -->
+                <p><strong>Bank Transfer:</strong> Account Number: 1234567890</p>
+                <p><strong>Donate via PayPal:</strong> <a href="#">Click here to donate</a></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Donate Now</button>
+            </div>
         </div>
     </div>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        
-      document.getElementById('login-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-    
-        const email = document.getElementById('inputEmail').value;
-        const password = document.getElementById('inputPassword').value;
-    
-        // You can add validation here
-        if (email === 'user@example.com' && password === 'password123') {
-          // If login is successful, send an event to the main process
-          window.electron.ipcRenderer.send('login-success');
-        } else {
-          // Handle login failure (optional)
-          alert('Invalid email or password.');
-        }
-      });
-    </script>
-    
+</div>
+     <!-- Main Content Area -->
+                <div class="content-area" id="content-area">
+                    <webview id="webview" src=""></webview>
+                </div>
 
-</body>
-</html>
+                <footer>
+                    <div class="footer-dress">
+                       Coded with love from Optimize-IT.
+                    </div>
+                </footer>
+
+                <!-- Settings Modal -->
+                                    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="nightModeSwitch">
+                                                        <label class="form-check-label" for="nightModeSwitch">Enable Night Mode</label>
+                                                    </div>
+                                                    <!-- Add more settings here as needed -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Time Converter Modal -->
+                                    <div class="modal fade" id="timeConverterModal" tabindex="-1" aria-labelledby="timeConverterModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="timeConverterModalLabel">International Time Converter</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <iframe src="https://www.worldtimebuddy.com/est-to-nigeria-lagos?pl=1&lid=5,2332459,2643743&h=5&hf=1" width="100%" height="400" frameborder="0"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Currency Converter Modal -->
+                                    <div class="modal fade" id="currencyConverterModal" tabindex="-1" aria-labelledby="currencyConverterModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="currencyConverterModalLabel">Currency Converter</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <iframe src="https://www.xe.com/currencyconverter/" width="100%" height="400" frameborder="0"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Support Us Modal -->
+                                    <div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="supportModalLabel">Support Us</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row text-center">
+                                                        <div class="col-6">
+                                                            <i class="fa fa-brands fa-chatgpt"></i><br />ChatGPT
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <i class="fa fa-brands fa-bootstrap"></i><br />Bootstrap
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <i class="fa fa-brands fa-electron"></i><br />Electron
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <i class="fa fa-brands fa-font-awesome"></i><br />FontAwesome
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <i class="fa fa-clock"></i><br />World Time Buddy
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-3">
+                                                        <p>80% of any donation will go to educational charity, funding education of orphans and the vulnerable, while 20% will be used to keep the app alive.</p>
+                                                        <form>
+                                                            <div class="mb-3">
+                                                                <label for="messageInput" class="form-label">Send us a message</label>
+                                                                <textarea class="form-control" id="messageInput" rows="3"></textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Send</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+                                <script>
+                                    const navLinks = document.querySelectorAll('.nav_link');
+                                    const webview = document.getElementById('webview');
+                            
+                                    navLinks.forEach(link => {
+                                        link.addEventListener('click', (event) => {
+                                            event.preventDefault();
+                                            const url = link.getAttribute('data-url');
+                                            webview.src = url;
+                                        });
+                                    });
+                                </script>
+                                <script type='text/javascript' src='./index.js'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript'>
+                                
+                                    document.addEventListener("DOMContentLoaded", function(event) {   
+                                    const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+                                    const toggle = document.getElementById(toggleId),
+                                    nav = document.getElementById(navId),
+                                    bodypd = document.getElementById(bodyId),
+                                    headerpd = document.getElementById(headerId)
+
+                                    // Validate that all variables exist
+                                    if(toggle && nav && bodypd && headerpd){
+                                    toggle.addEventListener('click', ()=>{
+                                    // show navbar
+                                    nav.classList.toggle('show')
+                                    // change icon
+                                    toggle.classList.toggle('bx-x')
+                                    // add padding to body
+                                    bodypd.classList.toggle('body-pd')
+                                    // add padding to header
+                                    headerpd.classList.toggle('body-pd')
+                                    })
+                                    }
+                                    }
+
+                                    showNavbar('header-toggle','nav-bar','body-pd','header')
+
+                                    /*===== LINK ACTIVE =====*/
+                                    const linkColor = document.querySelectorAll('.nav_link')
+
+                                    function colorLink(){
+                                    if(linkColor){
+                                    linkColor.forEach(l=> l.classList.remove('active'))
+                                    this.classList.add('active')
+                                    }
+                                    }
+                                    linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+                                    // Your code to run since DOM is loaded and ready
+                                    });
+
+                                </script>
+                                <script type='text/javascript'>
+                                    var myLink = document.querySelector('a[href="#"]');
+                                    myLink.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    });
+                                </script>
+                            
+                                </body>
+                            </html>

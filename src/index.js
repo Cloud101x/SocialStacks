@@ -30,7 +30,7 @@ const createWindow = () => {
 });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/dashboard2.html`);
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

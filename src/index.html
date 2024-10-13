@@ -31,7 +31,7 @@
                                 } @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
                                 :root{
                                 --header-height: 2rem;
-                                --nav-width: 68px;
+                                --nav-width: 200px;
                                 --first-color: #343a40; /*#4723D9*/
                                 --first-color-light: #AFA5D9;
                                 --white-color: #F7F6FB;
@@ -157,7 +157,11 @@
                                     border-radius: 4px;
                                 }
                                 .nav_icon{font-size: 1.25rem}
-                                .show{left: 0}
+                                .show{
+                                    left: 0;
+                                    /* width: calc(var(--nav-width) + 156px); */
+
+                                }
                                 .body-pd{padding-left: calc(var(--nav-width) + 1rem)}
                                 .active{color: var(--white-color)}
                                 .active::before{

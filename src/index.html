@@ -67,7 +67,7 @@
                                 .header_icons .btn {
                                     background-color: transparent;
                                     border: none;
-                                    font-size: 24px;
+                                    font-size: 16px;
                                     color: #333;
                                     cursor: pointer;
                                 }
@@ -82,7 +82,7 @@
 
                                 /* Adjust button size */
                                 .header_icons .btn i {
-                                    font-size: 24px;
+                                    font-size: 16px;
                                 }
 
                                 /* Modal content */
@@ -91,7 +91,7 @@
                                 }
 
                                 .modal-body {
-                                    padding: 20px;
+                                    padding: 10px;
                                 }
 
                                 .modal-title {
@@ -133,7 +133,7 @@
                                     display: flex;
                                     flex-direction: column;
                                     justify-content: space-between;
-                                    overflow: hidden
+                                    overflow: hidden;
                                 }
                                 .nav_logo, .nav_link{
                                     display: grid;
@@ -185,6 +185,8 @@
                                     background-color: var(--white-color);
                                     bottom: 0%;
                                     left: 0%;
+                                    right: 0%;
+                                    z-index: 20;
                                 }
                                 .custom-dropdown {
                                     position: fixed;
@@ -218,27 +220,28 @@
                                     <header class="header" id="header">
                                         <div class="header_toggle">
                                             <i class='bx bx-menu' id="header-toggle"></i>
+                                            <Span>Menu</Span>
                                         </div>
                                         <div class="header_icons">
                                             <!-- Settings Button -->
-                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#settingsModal" title="Settings">
+                                            <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#settingsModal" title="Settings">
                                                 <i class="fa fa-cog"></i>
-                                            </button>
+                                            </a>
                                     
                                             <!-- Time Converter Button -->
-                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#timeConverterModal" title="Convert Time">
+                                            <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#timeConverterModal" title="Convert Time">
                                                 <i class="fa fa-clock"></i>
-                                            </button>
+                                            </a>
                                     
                                             <!-- Currency Converter Button -->
-                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#currencyConverterModal" title="Convert Currency">
+                                            <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#currencyConverterModal" title="Convert Currency">
                                                 <i class="fa fa-dollar-sign"></i>
-                                            </button>
+                                            </a>
                                     
                                             <!-- Support Us Button -->
-                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#supportModal" title="Support Us">
+                                            <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#supportModal" title="Support Us">
                                                 <i class="fa fa-heart"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </header>
                                     
@@ -315,9 +318,9 @@
                 </div>
             </div>
             
-            <a href="#" class="nav_link">
-                <i class="fa-regular fa-life-ring fa-beat-fade" data-bs-toggle="modal" data-bs-target="#supportModal" title="Support Us"></i>
-                <span class="nav_name">Support Us!</span>
+            <a href="#" class="nav_logo">
+                <i class="fa-regular fa-life-ring fa-beat-fade" title="Who we are">ptimize-IT</i>
+                <span class="nav_name"></span>
             </a>
         </nav>
     </div>
@@ -382,48 +385,127 @@
                                         </div>
                                     </div>
                                     
-                                    <!-- Support Us Modal -->
-                                    <div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="supportModalLabel">Support Us</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row text-center">
-                                                        <h5><b>We Give Credits to</b></h5>
-                                                        <div class="col-6">
-                                                            <i class="fa fa-brands fa-chatgpt"></i><br />ChatGPT
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <i class="fa fa-brands fa-bootstrap"></i><br />Bootstrap
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <i class="fa fa-brands fa-electron"></i><br />Electron
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <i class="fa fa-brands fa-font-awesome"></i><br />FontAwesome
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <i class="fa fa-clock"></i><br />World Time Buddy
-                                                        </div>
-                                                    </div>
-                                                    <div class="mt-3 text-center">
-                                                        <h5><b>Feels like you wanna give a token?</b></h5>
-                                                        <p>80% of any donation will go to educational charity, funding education of orphans and the vulnerable, while 20% will be used to keep the app alive.</p>
-                                                        <form>
-                                                            <div class="mb-3">
-                                                                <label for="messageInput" class="form-label">Send us a message</label>
-                                                                <textarea class="form-control" id="messageInput" rows="3"></textarea>
-                                                            </div>
-                                                            <button type="submit" class="btn btn-primary">Send</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   <!-- Support Us Modal -->
+<div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="supportModalLabel">Support Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row text-center">
+                    <h5><b>We Give Credits to</b></h5>
+                    <div class="col-6">
+                        <i class="fa fa-brands fa-chatgpt"></i><br />ChatGPT
+                    </div>
+                    <div class="col-6">
+                        <i class="fa fa-brands fa-bootstrap"></i><br />Bootstrap
+                    </div>
+                    <div class="col-6">
+                        <i class="fa fa-brands fa-electron"></i><br />Electron
+                    </div>
+                    <div class="col-6">
+                        <i class="fa fa-brands fa-font-awesome"></i><br />FontAwesome
+                    </div>
+                    <div class="col-6">
+                        <i class="fa fa-clock"></i><br />World Time Buddy
+                    </div>
+                </div>
+                <div class="mt-3 text-center">
+                    <h5><b>Feels like you wanna give a token?</b></h5>
+                    <p>80% of any donation will go to educational charity, funding education of orphans and the vulnerable, while 20% will be used to keep the app alive.</p>
+                    
+                    <!-- Donation Options -->
+                    <h5 class="mt-4"><b>Donate Crypto</b></h5>
+                    <div class="d-flex justify-content-center mt-2">
+                        <a class="btn" onclick="copyToClipboard('bitcoin-wallet-address')" title="Bitcoin">
+                            <i class="fa fa-brands fa-bitcoin fa-2x"></i>
+                        </a>
+                        <a class="btn" onclick="copyToClipboard('ethereum-wallet-address')" title="Etherium">
+                            <i class="fa fa-brands fa-ethereum fa-2x"></i>
+                        </a>
+                        <a class="btn" onclick="copyToClipboard('usdt-wallet-address')" title="USDT">
+                            <i class="fa fa-solid fa-dollar-sign fa-2x"></i>
+                        </a>
+                    </div>
+                    
+                    <h5 class="mt-4"><b>Donate Cash</b></h5>
+                    <div class="d-flex justify-content-center mt-2">
+                        <a class="btn" onclick="showPaymentPrompt('Mastercard')">
+                            <i class="fa fa-brands fa-cc-mastercard fa-2x"></i>
+                        </a>
+                        <a class="btn" onclick="showPaymentPrompt('Visa')">
+                            <i class="fa fa-brands fa-cc-visa fa-2x"></i>
+                        </a>
+                        <a class="btn" onclick="showPaymentPrompt('Flutterwave')">
+                            <img src="./img/flutterwave.png" alt="Flutterwave" style="width: 100px; height: 40px;">
+                        </a>
+                    </div>
+
+                    <!-- Message Form -->
+                    <form class="mt-4">
+                        <div class="mb-3">
+                            <h5 for="messageInput" class="form-label"><b>Or Give Us an Advise</b></h5>
+                            <textarea class="form-control" id="messageInput" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyToClipboard(walletAddress) {
+        const addressMap = {
+            'bitcoin-wallet-address': 'your-bitcoin-wallet-address',
+            'ethereum-wallet-address': 'your-ethereum-wallet-address',
+            'usdt-wallet-address': 'your-usdt-wallet-address'
+        };
+        
+        navigator.clipboard.writeText(addressMap[walletAddress]).then(() => {
+            alert('Wallet address copied to clipboard!');
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+        });
+    }
+//Show Payment Methods
+    function showPaymentPrompt(paymentMethod) {
+        if (paymentMethod === 'Flutterwave') {
+            FlutterwaveCheckout({
+                public_key: "YOUR_PUBLIC_KEY", // Replace with your Flutterwave public key
+                tx_ref: "donation_" + Date.now(), // Unique transaction reference
+                amount: 50, // Set the default donation amount here or let users choose
+                currency: "NGN",
+                payment_options: "card, banktransfer, ussd", // Include available payment options
+                customer: {
+                    email: "donor@example.com", // Get donor's email or prompt for it
+                    phonenumber: "08012345678",
+                    name: "Donor Name"
+                },
+                callback: function (data) {
+                    // Handle successful payment here
+                    alert('Donation successful! Thank you.');
+                    console.log(data);
+                },
+                onclose: function() {
+                    alert('Payment cancelled.');
+                },
+                customizations: {
+                    title: "Support Us",
+                    description: "Donation for education and app support",
+                    logo: "your-logo-url.png" // Optional: Add your app logo URL
+                }
+            });
+        } else {
+            alert('Further payment processing will be integrated here for ' + paymentMethod);
+        }
+    }
+</script>
+
+
                                     
                                 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
                                 <script>
@@ -438,6 +520,7 @@
                                         });
                                     });
                                 </script>
+                                <script src="https://checkout.flutterwave.com/v3.js"></script>
                                 <script type='text/javascript' src='./index.js'></script>
                                 <script type='text/javascript' src='#'></script>
                                 <script type='text/javascript'>

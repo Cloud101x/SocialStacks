@@ -1,8 +1,8 @@
 {
-  "name": "simple-desktop-app-electronjs",
-  "productName": "simple-desktop-app-electronjs",
+  "name": "social-stacks",
+  "productName": "socialstacks",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "All Social Media in One Place",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -32,7 +32,7 @@
         "packageManager": "npm"
       },
       "electronWinstallerConfig": {
-        "name": "simple_desktop_app_electronjs"
+        "name": "social_stacks"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -42,7 +42,7 @@
       },
       "windowsStoreConfig": {
         "packageName": "",
-        "name": "simpledesktopappelectronjs"
+        "name": "socialstacks"
       }
     }
   },
